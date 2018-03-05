@@ -1,0 +1,19 @@
+{
+  "name": "cruise-ships",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davesheff/cruise-ships.git"
+  },
+  "author": "David Sheffield",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/davesheff/cruise-ships/issues"
+  },
+  "homepage": "https://github.com/davesheff/cruise-ships#readme"
+}
