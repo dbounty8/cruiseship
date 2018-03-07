@@ -4,7 +4,7 @@ function Ship(currentPort) {
 
 Ship.prototype = {
   setSail() {
-    this.currentPort = undefined;
+    this.currentPort = false;
   },
 
   dock(port) {
