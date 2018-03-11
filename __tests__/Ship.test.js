@@ -1,9 +1,11 @@
+/* eslint-env jest */
 const { Ship } = require('../src/Ship');
 const { Port } = require('../src/Port');
 
+
 describe('Ship', () => {
   test('it can be instantiated', () => {
-    expect(new Ship).toBeInstanceOf(Object);
+    expect(new Ship()).toBeInstanceOf(Object);
   });
 
   test('Sets the currentPort property', () => {
