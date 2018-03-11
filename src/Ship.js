@@ -1,5 +1,6 @@
-function Ship(currentPort) {
-  this.currentPort = currentPort;
+function Ship(itinerary) {
+  this.itinerary = itinerary;
+  this.currentPort = itinerary.ports[0];
 }
 
 Ship.prototype = {
@@ -7,8 +8,10 @@ Ship.prototype = {
     this.currentPort = false;
   },
 
-  dock(port) {
-    this.currentPort = port;
+  dock() {
+    const itinerary = this.itinerary;
+    const previousPortIndex = itinerary.ports.indexOf(this.currentPort);
+    this.currentPort = itinerary.ports[previousPortIndex + 1];
   },
 };
 
