@@ -1,11 +1,11 @@
 function Port(name, ships) {
   this.name = name;
-  this.ships = ships;
+  this.ships = [ships];
 }
 
 Port.prototype = {
   addShip(ship) {
-    this.ships = [ship];
+    this.ships.push(ship);
   },
 
   removeShip(ship) {
