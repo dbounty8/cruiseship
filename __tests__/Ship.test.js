@@ -4,26 +4,28 @@ const { Port } = require('../src/Port');
 const { Itinerary } = require('../src/Itinerary');
 
 describe('Ship', () => {
-  test('it can be instantiated', () => {
-    const port = new Port('Dover');
-    const itinerary = new Itinerary([port]);
-    const ship = new Ship(itinerary);
-    expect(ship).toBeInstanceOf(Object);
-  });
-
-  test('Sets the currentPort property', () => {
-    const port = new Port('Dover');
-    const itinerary = new Itinerary([port]);
-    const ship = new Ship(itinerary);
-    expect(ship.currentPort).toBe(port);
-  });
-
-  test('can set sail', () => {
-    const port = new Port('Dover');
-    const itinerary = new Itinerary([port]);
-    const ship = new Ship(itinerary);
-    ship.setSail();
-    expect(port.ships).not.toContain(ship);
+  describe('with a port and itinerary', () => {
+    let ship;
+    let port;
+    beforeEach(() => {
+      port = new Port('Dover');
+      const itinerary = new Itinerary([port]);
+      ship = new Ship(itinerary);
+    });
+    test('it can be instantiated', () => {
+      expect(ship).toBeInstanceOf(Object);
+    });
+    test('Sets the currentPort property', () => {
+      expect(ship.currentPort).toBe(port);
+    });
+    test('can set sail', () => {
+      ship.setSail();
+      expect(ship.currentPort).toBeFalsy();
+      expect(port.ships).not.toContain(ship);
+    });
+    test('gets added to port on instantiation', () => {
+      expect(port.ships).toContain(ship);
+    });
   });
 
   test('can dock at a different port', () => {
@@ -35,12 +37,4 @@ describe('Ship', () => {
     expect(ship.currentPort).toBe(calais);
     expect(calais.ships).toContain(ship);
   });
-
-  test('gets added to port on instantiation', () => {
-    const port = new Port('Dover');
-    const itinerary = new Itinerary([port]);
-    const ship = new Ship(itinerary);
-    expect(port.ships).toContain(ship);
-  });
 });
-
