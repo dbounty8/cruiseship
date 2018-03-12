@@ -1,6 +1,6 @@
-function Port(name, ships) {
+function Port(name) {
   this.name = name;
-  this.ships = [ships];
+  this.ships = [];
 }
 
 Port.prototype = {

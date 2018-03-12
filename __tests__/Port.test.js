@@ -11,6 +11,11 @@ describe('Port', () => {
     expect(port.name).toEqual('Dover');
   });
 
+  test('Sets the ships property to an empty array', () => {
+    const port = new Port('Dover');
+    expect(port.ships).toEqual([]);
+  });
+
   test('can add a ship', () => {
     const port = new Port('Dover');
     const ship = {};
