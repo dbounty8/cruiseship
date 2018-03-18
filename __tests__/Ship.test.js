@@ -8,7 +8,11 @@ describe('Ship', () => {
     let ship;
     let port;
     beforeEach(() => {
-      port = new Port('Dover');
+      port = {
+        name: 'Dover',
+        removeShip: jest.fn(),
+        addShip: jest.fn(),
+      };
       const itinerary = new Itinerary([port]);
       ship = new Ship(itinerary);
     });
@@ -21,10 +25,10 @@ describe('Ship', () => {
     test('can set sail', () => {
       ship.setSail();
       expect(ship.currentPort).toBeFalsy();
-      expect(port.ships).not.toContain(ship);
+      expect(port.removeShip).toHaveBeenCalledWith(ship);
     });
     test('gets added to port on instantiation', () => {
-      expect(port.ships).toContain(ship);
+      expect(port.addShip).toHaveBeenCalledWith(ship);
     });
   });
 
