@@ -3,7 +3,7 @@ const { Ship } = require('../src/Ship');
 
 const mockMath = Object.create(global.Math);
 mockMath.random = () => 0.5;
-global.Math = mockMath; 
+global.Math = mockMath;
 
 describe('Ship', () => {
   describe('with a port and itinerary', () => {
