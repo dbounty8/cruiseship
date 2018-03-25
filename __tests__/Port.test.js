@@ -7,8 +7,9 @@ describe('Port', () => {
   });
 
   test('Sets the name property', () => {
-    const port = new Port('Dover');
-    expect(port.name).toEqual('Dover');
+    const mockName = jest.fn();
+    const port = new Port(mockName);
+    expect(port.name).toEqual(mockName);
   });
 
   test('Sets the ships property to an empty array', () => {

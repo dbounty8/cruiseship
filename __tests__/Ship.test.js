@@ -1,7 +1,5 @@
 /* eslint-env jest */
 const { Ship } = require('../src/Ship');
-const { Port } = require('../src/Port');
-const { Itinerary } = require('../src/Itinerary');
 
 describe('Ship', () => {
   describe('with a port and itinerary', () => {
@@ -13,7 +11,9 @@ describe('Ship', () => {
         removeShip: jest.fn(),
         addShip: jest.fn(),
       };
-      const itinerary = new Itinerary([port]);
+      const itinerary = {
+        ports: [port],
+      };
       ship = new Ship(itinerary);
     });
     test('it can be instantiated', () => {
@@ -33,12 +33,22 @@ describe('Ship', () => {
   });
 
   test('can dock at a different port', () => {
-    const dover = new Port('Dover');
-    const calais = new Port('Calais');
-    const itinerary = new Itinerary([dover, calais]);
+    const dover = {
+      name: 'Dover',
+      removeShip: jest.fn(),
+      addShip: jest.fn(),
+    };
+    const calais = {
+      name: 'Calais',
+      removeShip: jest.fn(),
+      addShip: jest.fn(),
+    };
+    const itinerary = {
+      ports: [dover, calais],
+    };
     const ship = new Ship(itinerary);
     ship.dock();
     expect(ship.currentPort).toBe(calais);
-    expect(calais.ships).toContain(ship);
+    expect(calais.addShip).toHaveBeenCalledWith(ship);
   });
 });
