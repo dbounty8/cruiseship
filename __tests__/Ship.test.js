@@ -1,6 +1,10 @@
 /* eslint-env jest */
 const { Ship } = require('../src/Ship');
 
+const mockMath = Object.create(global.Math);
+mockMath.random = () => 0.5;
+global.Math = mockMath; 
+
 describe('Ship', () => {
   describe('with a port and itinerary', () => {
     let ship;
@@ -29,6 +33,10 @@ describe('Ship', () => {
     });
     test('gets added to port on instantiation', () => {
       expect(port.addShip).toHaveBeenCalledWith(ship);
+    });
+    test('can not set sail in stormy weather', () => {
+      expect(ship.setSail).toThrow('Cannot set sail. Weather too stormy');
+      expect(ship.currentPort).toEqual(port);
     });
   });
 
