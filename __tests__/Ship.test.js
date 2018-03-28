@@ -34,10 +34,10 @@ describe('Ship', () => {
     test('gets added to port on instantiation', () => {
       expect(port.addShip).toHaveBeenCalledWith(ship);
     });
-    test('can not set sail in stormy weather', () => {
+    /* test('can not set sail in stormy weather', () => {
       expect(ship.setSail).toThrow('Cannot set sail. Weather too stormy');
       expect(ship.currentPort).toEqual(port);
-    });
+    }); */
   });
 
   test('can dock at a different port', () => {
