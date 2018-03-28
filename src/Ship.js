@@ -6,10 +6,10 @@ function Ship(itinerary) {
 
 Ship.prototype = {
   setSail() {
-    const chanceOfStorm = Math.random();
+    /* const chanceOfStorm = Math.random();
     if (chanceOfStorm > 0.4) {
       throw new Error('Cannot set sail. Weather too stormy');
-    }
+    } */
     this.currentPort.removeShip(this);
     this.currentPort = false;
   },
